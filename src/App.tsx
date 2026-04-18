@@ -41,75 +41,93 @@ export default function App() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <button className="border border-brand-accent px-[24px] py-[10px] text-[11px] uppercase tracking-[1px] text-brand-accent hover:bg-brand-accent hover:text-brand-dark transition-all duration-300">
+          <button 
+            onClick={() => document.getElementById('produtos')?.scrollIntoView({ behavior: 'smooth' })}
+            className="border border-brand-accent px-[24px] py-[10px] text-[11px] uppercase tracking-[1px] text-brand-accent hover:bg-brand-accent hover:text-brand-dark transition-all duration-300"
+          >
             Acessar Loja
           </button>
         </motion.div>
       </header>
 
       {/* HERO SECTION */}
-      <section className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
-        {/* Background Image & Gradient Masks Optimized for LCP < 1.2s */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1615486171448-4fdab34e5cb4?q=80&w=2070&auto=format&fit=crop" 
-            alt="Produtos Naturais e Grãos" 
-            className="w-full h-full object-cover opacity-40 scale-105"
-            referrerPolicy="no-referrer"
-            fetchPriority="high"
-            loading="eager"
-            decoding="async"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-dark via-brand-dark/80 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-dark/90 via-transparent to-transparent md:w-2/3" />
-        </div>
-
-        <div className="container relative z-10 mx-auto px-6 md:px-12">
-          <div className="max-w-3xl">
+      <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
+        <div className="container mx-auto px-6 md:px-12 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_1fr] gap-12 items-center">
+            
+            {/* TEXT CONTENT */}
+            <div>
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="inline-flex items-center gap-2 px-3 py-1 rounded-[2px] border border-white/20 glass-card mb-6"
+              >
+                <Leaf className="w-4 h-4 text-brand-accent" />
+                <span className="text-xs font-semibold tracking-widest uppercase text-white/80">Saúde & Bem-Estar</span>
+              </motion.div>
+              
+              <motion.h1 
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+                className="font-serif text-5xl md:text-[82px] leading-[0.9] font-normal tracking-[-2px] mb-6"
+              >
+                A vida <span className="text-brand-accent">nutrida</span><br />
+                pela natureza.
+              </motion.h1>
+              
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.6 }}
+                className="text-[18px] text-white/70 mb-10 max-w-[480px] font-normal leading-[1.6]"
+              >
+                Descubra o Empório Nobre Grão. A mais completa seleção de produtos a granel, chás e suplementos em Curitiba. Qualidade premium e atendimento acolhedor.
+              </motion.p>
+              
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="flex flex-col sm:flex-row gap-4"
+              >
+                <button 
+                  onClick={() => document.getElementById('produtos')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-brand-accent text-black px-[24px] py-[10px] text-[11px] uppercase tracking-[1px] font-bold hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2 border-none"
+                >
+                  <ShoppingBag className="w-4 h-4" />
+                  Explorar Produtos
+                </button>
+                <button 
+                  onClick={() => document.getElementById('loja-fisica')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="px-[24px] py-[10px] text-[11px] uppercase tracking-[1px] text-white hover:border-brand-accent hover:text-brand-accent transition-colors duration-300 flex items-center justify-center gap-2 border border-white/30 rounded-[2px]"
+                >
+                  <MapPin className="w-4 h-4 opacity-70" />
+                  Loja Física: Bom Retiro
+                </button>
+              </motion.div>
+            </div>
+            
+            {/* HERO IMAGE */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-[2px] border border-white/20 glass-card mb-6"
-            >
-              <Leaf className="w-4 h-4 text-brand-accent" />
-              <span className="text-xs font-semibold tracking-widest uppercase text-white/80">Saúde & Bem-Estar</span>
-            </motion.div>
-            
-            <motion.h1 
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.4 }}
-              className="font-serif text-5xl md:text-[82px] leading-[0.9] font-normal tracking-[-2px] mb-6"
+              className="relative w-full aspect-[4/5] object-cover rounded-[2px] overflow-hidden glass-card hidden lg:block border border-white/10"
             >
-              A vida <span className="text-brand-accent">nutrida</span><br />
-              pela natureza.
-            </motion.h1>
-            
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="text-[18px] text-white/70 mb-10 max-w-[480px] font-normal leading-[1.6]"
-            >
-              Descubra o Empório Nobre Grão. A mais completa seleção de produtos a granel, chás e suplementos em Curitiba. Qualidade premium e atendimento acolhedor.
-            </motion.p>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <button className="bg-brand-accent text-black px-[24px] py-[10px] text-[11px] uppercase tracking-[1px] font-bold hover:scale-105 transition-transform duration-300 flex items-center justify-center gap-2 border-none">
-                <ShoppingBag className="w-4 h-4" />
-                Explorar Produtos
-              </button>
-              <button className="px-[24px] py-[10px] text-[11px] uppercase tracking-[1px] text-white hover:border-brand-accent hover:text-brand-accent transition-colors duration-300 flex items-center justify-center gap-2 border border-white/30 rounded-[2px]">
-                <MapPin className="w-4 h-4 opacity-70" />
-                Loja Física: Bom Retiro
-              </button>
+              <img 
+                src="https://images.unsplash.com/photo-1508061253366-f7da158b6d46?q=80&w=1200&auto=format&fit=crop" 
+                alt="Produtos Naturais a granel e especiarias" 
+                className="w-full h-full object-cover"
+                referrerPolicy="no-referrer"
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-transparent to-transparent pointer-events-none" />
             </motion.div>
+            
           </div>
         </div>
       </section>
@@ -145,7 +163,7 @@ export default function App() {
       </div>
 
       {/* DIFFERENTIALS - BENTO GRID */}
-      <section className="py-24 md:py-32 px-6 md:px-12 container mx-auto relative">
+      <section id="produtos" className="py-24 md:py-32 px-6 md:px-12 container mx-auto relative scroll-mt-20">
         <FadeIn className="mb-16">
           <h2 className="font-serif text-[42px] leading-[0.9] tracking-[-1px] text-center font-normal">Nosso Padrão <span className="text-brand-accent">Nobre</span></h2>
           <p className="text-center text-white/70 mt-4 max-w-[480px] mx-auto text-[18px] leading-[1.6]">Uma curadoria exigente para garantir que o melhor da natureza chegue até a sua mesa.</p>
@@ -302,7 +320,7 @@ export default function App() {
       </section>
 
       {/* MAP SECTION */}
-      <section className="py-24 relative overflow-hidden bg-[#080808] border-t border-white/5">
+      <section id="loja-fisica" className="py-24 relative overflow-hidden bg-[#080808] border-t border-white/5 scroll-mt-20">
         <div className="container mx-auto px-6 md:px-12">
           <FadeIn className="mb-12">
             <h2 className="font-serif text-[42px] leading-[0.9] tracking-[-1px] text-center font-normal">Nossa <span className="text-brand-accent">Localização</span></h2>
